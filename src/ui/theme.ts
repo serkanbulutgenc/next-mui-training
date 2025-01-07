@@ -9,6 +9,20 @@ const theme  = responsiveFontSizes(createTheme({
         fontFamily: 'var(--font-roboto)'
     },
     components:{
+        MuiNavLink:{
+            styleOverrides:{
+                root:{
+                    //backgroundColor:'red'
+                }
+            }
+        },
+        MuiColoredBox:{
+            styleOverrides:{
+                root:{
+                    backgroundColor:'green'
+                }
+            }
+        },
         MuiAppBar:{
             defaultProps:{
                 elevation:0,
