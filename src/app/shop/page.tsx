@@ -1,31 +1,28 @@
+import ProductsGrid from "@/components/shop/productGrid";
+import { getProducts } from "@/lib/products";
 import { SectionBox } from "@/ui/styled-components";
-import { Container, Typography } from "@mui/material";
+import { CircularProgress, Container, Typography } from "@mui/material";
+import { Suspense } from "react";
 
-export default async function Shop() {
+export async function Products() {
   const products = await getProducts();
-  console.log(products);
 
-  if (!products) {
-    return;
-  }
-
-  return (
-    <SectionBox>
-      <Container maxWidth={"lg"}>
-        <Typography variant="h2">Shop</Typography>
-      </Container>
-    </SectionBox>
-  );
+  return <ProductsGrid products={products} />;
 }
 
-export async function getProducts() {
-  const res = await fetch(
-    "https://sbulutgenc.pythonanywhere.com/api/products/"
+export default function Shop() {
+  return (
+    <>
+      <SectionBox>
+        <Container maxWidth={"lg"}>
+          <Typography variant="h2">Shop</Typography>
+        </Container>
+      </SectionBox>
+      <Suspense fallback={<CircularProgress />}>
+        <Container maxWidth={"lg"}>
+          <Products />
+        </Container>
+      </Suspense>
+    </>
   );
-
-  if (!res.ok) {
-    throw new Error("An error occoured");
-  }
-
-  return res.json();
 }

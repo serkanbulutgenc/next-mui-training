@@ -1,5 +1,5 @@
 "use client";
-import { Box, Button } from "@mui/material";
+import { Box, Button, Card } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 export const NavLink = styled(Button, {
@@ -40,4 +40,20 @@ export const SectionBox = styled("section", {
 })(({ theme }) => ({
   width: "auto",
   height: "auto",
+}));
+
+export const ProductCard = styled(Card, {
+  name: "ProductCard",
+  slot: "root",
+  label: "MuiProductCard",
+})(({ theme }) => ({
+  textAlign: "center",
+  boxShadow: "none",
+  borderRadius: 0,
+  "& .MuiCardContent-root": {
+    "&:hover": { backgroundColor: "red", cursor: "pointer" },
+  },
+  "& .MuiCardActions-root": {
+    opacity: 0,
+  },
 }));
