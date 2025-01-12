@@ -19,7 +19,7 @@ export default function ShopLayout({
               alignItems: "center",
             }}
           >
-            <Typography variant="h5" component={"p"}>
+            <Typography variant="h3" component={"p"} sx={{ fontWeight: 700 }}>
               SHOP
             </Typography>
 

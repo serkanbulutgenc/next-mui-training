@@ -31,6 +31,12 @@ const theme = responsiveFontSizes(
     --bs-body-color: #212529;*/
     },
     components: {
+      MuiShopHeroBox: {
+        defaultProps: {
+          component: "section",
+        },
+      },
+
       MuiNavLink: {
         styleOverrides: {
           root: {

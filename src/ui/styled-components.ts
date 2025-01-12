@@ -7,10 +7,15 @@ export const NavLink = styled(Button, {
   slot: "root",
   label: "AppNavLink",
 })(({ theme }) => ({
-  color: theme.palette.text.primary,
+  //color: theme.palette.text.primary,
   "&:hover": {
     color: theme.palette.secondary.light,
     //backgroundColor:'transparent'
+  },
+  "&.active": {
+    color: theme.palette.secondary.light,
+    backgroundColor: theme.palette.background.paper,
+    fontWeight: 700,
   },
 }));
 
@@ -26,11 +31,13 @@ export const ColoredBox = styled(Box, {
 export const ShopHeroBox = styled(Box, {
   name: "MuiShopHeroBox",
   slot: "root",
+  label: "ShopHeroBox",
 })(({ theme }) => ({
   width: "auto",
   height: "auto",
   paddingTop: theme.spacing(8),
   paddingBottom: theme.spacing(8),
+  marginBottom: theme.spacing(4),
   backgroundColor: `rgb(248,249,250)`,
 }));
 
@@ -50,10 +57,25 @@ export const ProductCard = styled(Card, {
   textAlign: "center",
   boxShadow: "none",
   borderRadius: 0,
-  "& .MuiCardContent-root": {
-    "&:hover": { backgroundColor: "red", cursor: "pointer" },
+  "&:hover": {
+    cursor: "pointer",
+    "& .MuiCardActions-root": {
+      transition: "opacity 0.3s",
+      opacity: 1,
+    },
+    "& .MuiCardMedia-root": {
+      opacity: 0.3,
+      transition: "opacity 0.3s",
+    },
   },
   "& .MuiCardActions-root": {
+    p: 1,
+    backgroundColor: "rgba(0,0,0,.1)",
+    position: "absolute",
+    top: "50%",
+    left: 0,
+    right: 0,
     opacity: 0,
+    transition: "opacity 0.3s",
   },
 }));

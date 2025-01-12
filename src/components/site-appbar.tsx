@@ -13,8 +13,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import SearchIcon from "@mui/icons-material/Search";
-import Link from "next/link";
-import { NavLink } from "@/ui/styled-components";
+import AppNavLink from "./nav-link";
 
 export default function SiteAppBar() {
   return (
@@ -34,38 +33,10 @@ export default function SiteAppBar() {
                   component={"nav"}
                   divider={<Divider orientation="vertical" flexItem />}
                 >
-                  <NavLink
-                    variant={"text"}
-                    color="inherit"
-                    component={Link}
-                    href="/"
-                  >
-                    Home
-                  </NavLink>
-                  <NavLink
-                    variant={"text"}
-                    color="inherit"
-                    component={Link}
-                    href="shop"
-                  >
-                    Shop
-                  </NavLink>
-                  <NavLink
-                    variant={"text"}
-                    color="inherit"
-                    component={Link}
-                    href="about"
-                  >
-                    About
-                  </NavLink>
-                  <NavLink
-                    variant={"text"}
-                    color="inherit"
-                    component={Link}
-                    href="contact"
-                  >
-                    Contact
-                  </NavLink>
+                  <AppNavLink href="/" text="Home" />
+                  <AppNavLink href="/shop" text="Shop" />
+                  <AppNavLink href="/about" text="About" />
+                  <AppNavLink href="/contact" text="Contact" />
                 </Stack>
               </Grid>
               <Grid

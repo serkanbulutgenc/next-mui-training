@@ -1,7 +1,6 @@
 import ProductsGrid from "@/components/shop/productGrid";
 import { getProducts } from "@/lib/products";
-import { SectionBox } from "@/ui/styled-components";
-import { CircularProgress, Container, Typography } from "@mui/material";
+import { CircularProgress, Container } from "@mui/material";
 import { Suspense } from "react";
 
 export async function Products() {
@@ -13,15 +12,22 @@ export async function Products() {
 export default function Shop() {
   return (
     <>
-      <SectionBox>
-        <Container maxWidth={"lg"}>
-          <Typography variant="h2">Shop</Typography>
-        </Container>
-      </SectionBox>
-      <Suspense fallback={<CircularProgress />}>
-        <Container maxWidth={"lg"}>
-          <Products />
-        </Container>
+      <Suspense
+        fallback={
+          <Container
+            maxWidth={"lg"}
+            sx={{
+              p: 8,
+              display: "flex",
+              justifyContent: "center",
+              alignContent: "center",
+            }}
+          >
+            <CircularProgress />
+          </Container>
+        }
+      >
+        <Products />
       </Suspense>
     </>
   );

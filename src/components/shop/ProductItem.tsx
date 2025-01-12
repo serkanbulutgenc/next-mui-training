@@ -34,9 +34,7 @@ export default function ProductItem({ product }) {
               {253.6}
             </Typography>
           </CardContent>
-          <CardActions
-            sx={{ position: "absolute", top: "50%", left: 0, right: 0 }}
-          >
+          <CardActions sx={{}}>
             <Box
               sx={{
                 display: "flex",
@@ -44,11 +42,17 @@ export default function ProductItem({ product }) {
                 width: "100%",
               }}
             >
-              <IconButton size="small">
+              <IconButton aria-label="favorite" size="small" color="secondary">
                 <FavoriteIcon />
               </IconButton>
-              <Button size="small">Add to Cart</Button>
-              <IconButton size="small">
+              <Button variant={"contained"} size="small" color="warning">
+                Add to Cart
+              </Button>
+              <IconButton
+                aria-label="product-detail"
+                size="small"
+                color="secondary"
+              >
                 <FullscreenIcon />
               </IconButton>
             </Box>
