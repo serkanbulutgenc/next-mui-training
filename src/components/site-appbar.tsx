@@ -35,8 +35,10 @@ export default function SiteAppBar() {
                 >
                   <AppNavLink href="/" text="Home" />
                   <AppNavLink href="/shop" text="Shop" />
+                  <AppNavLink href="/blog" text="Blog" />
                   <AppNavLink href="/about" text="About" />
                   <AppNavLink href="/contact" text="Contact" />
+                  <AppNavLink href="/blog/new" text="New" />
                 </Stack>
               </Grid>
               <Grid
