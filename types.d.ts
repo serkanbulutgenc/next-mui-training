@@ -1,3 +1,7 @@
+export interface Category {
+  id?: number;
+  title: string;
+}
 export interface Posts {
   count: number;
   next?: string;
@@ -8,8 +12,9 @@ export interface Posts {
 export interface Post {
   id?: number;
   title: string;
+  slug: string;
   summary?: string;
   content: string;
-  category?: string;
+  category?: number;
   owner?: string;
 }

@@ -10,6 +10,16 @@ export async function getPosts(): Promise<Posts> {
   return res.json();
 }
 
+export async function getPost(id: string): Promise<Post> {
+  const res = await fetch(`https://sbgnc.pythonanywhere.com/api/posts/${id}`);
+
+  if (!res.ok) {
+    throw new Error("An error occured while getting post from the server");
+  }
+
+  return res.json();
+}
+
 export async function savePost(postData: Post): Promise<Post> {
   const res = await fetch(`https://sbgnc.pythonanywhere.com/api/posts/`, {
     method: "POST",

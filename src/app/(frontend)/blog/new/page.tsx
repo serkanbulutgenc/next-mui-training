@@ -6,7 +6,7 @@ const NewPostPage: React.FC = () => {
   return (
     <SectionBox>
       <Container maxWidth={"sm"}>
-        <Typography variant="h3" component={"p"}>
+        <Typography variant="h3" component={"p"} sx={{ pb: 3 }}>
           New Post
         </Typography>
         <PostForm />
