@@ -2,20 +2,24 @@ import PostDetail from "@/components/blog/post-detail";
 import { getPost, getPosts } from "@/lib/posts";
 import { notFound } from "next/navigation";
 import React from "react";
+import { Post } from "../../../../../types";
 
 const PostDetailPage: React.FC<{ params: Promise<{ slug: string }> }> = async ({
   params,
 }) => {
   const slug = (await params).slug;
-  const post = await getPost();
+  const posts = await getPosts();
 
-  const post = posts.find((post) => post.slug === slug);
+  // #TODO
+  const selectedPost = posts.results.find(
+    (postItem: Post) => postItem.slug === slug
+  );
 
-  if (!post) {
+  if (!selectedPost) {
     notFound();
   }
 
-  return <PostDetail post={post} />;
+  return <PostDetail post={selectedPost} />;
 };
 
 export default PostDetailPage;

@@ -5,7 +5,8 @@ import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 const theme = responsiveFontSizes(
   createTheme({
     typography: {
-      htmlFontSize: 18,
+      fontSize: 10,
+      //htmlFontSize: 14,
       fontFamily: "var(--font-roboto)",
       fontWeightBold: 400,
       h1: { fontSize: "2.01rem" },
@@ -24,11 +25,6 @@ const theme = responsiveFontSizes(
       h6: {
         fontSize: "1rem",
       },
-
-      /*--bs-body-font-size: 1rem;
-    --bs-body-font-weight: 400;
-    --bs-body-line-height: 1.5;
-    --bs-body-color: #212529;*/
     },
     components: {
       MuiShopHeroBox: {
@@ -82,7 +78,10 @@ const theme = responsiveFontSizes(
         },
       },
     },
-    cssVariables: true,
+    cssVariables: {
+      colorSchemeSelector: "data-toolpad-color-scheme",
+    },
+    colorSchemes: { light: true, dark: true },
   })
 );
 

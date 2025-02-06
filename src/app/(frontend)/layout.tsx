@@ -1,15 +1,17 @@
+import SiteAppBar from "@/components/site-appbar";
 import { ShopHeroBox } from "@/ui/styled-components";
 import { Box, Breadcrumbs, Container, Typography } from "@mui/material";
 import Link from "next/link";
 
-export default function ShopLayout({
+export default function FrontEndLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
     <>
-      <ShopHeroBox component={"section"}>
+      <SiteAppBar />
+      {/* <ShopHeroBox component={"section"}>
         <Container maxWidth={"lg"}>
           <Box
             sx={{
@@ -34,8 +36,8 @@ export default function ShopLayout({
             </Box>
           </Box>
         </Container>
-      </ShopHeroBox>
-      {children}
+      </ShopHeroBox>*/}
+      <main>{children}</main>
     </>
   );
 }
