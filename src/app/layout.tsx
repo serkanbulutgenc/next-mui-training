@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import { Lemon, Roboto } from "next/font/google";
 import { CssBaseline, LinearProgress } from "@mui/material";
-import { Navigation } from "@toolpad/core";
+import { Navigation, Session } from "@toolpad/core";
 import { NextAppProvider } from "@toolpad/core/nextjs";
 
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import CategoryIcon from "@mui/icons-material/Category";
+import ArticleIcon from "@mui/icons-material/Article";
+
 import theme from "@/ui/theme";
 import "./globals.css";
 import React from "react";
@@ -35,36 +37,52 @@ const navigation: Navigation = [
   },
   {
     title: "Dashboard",
-    segment: "dashboard",
     icon: <DashboardIcon />,
-    children: [],
+    segment: "dashboard",
   },
+  { kind: "divider" },
+  { kind: "header", title: "Blog" },
+  { icon: <ArticleIcon />, title: "Posts", segment: "dashboard/posts" },
   {
-    kind: "header",
-    title: "Blog",
-  },
-
-  {
-    title: "Blog",
-    segment: "dashboard/blog",
-    children: [
-      { title: "Posts", segment: "posts" },
-      { title: "Categories", segment: "categories" },
-    ],
+    icon: <CategoryIcon />,
+    title: "Categories",
+    segment: "dashboard/categories",
   },
 ];
 
-export default function RootLayout({
+const session: Session = {
+  user: { name: "foo", email: "foo@mail.com", id: "1" },
+};
+
+export const authFunction = () => {
+  return {
+    signIn: async () => {
+      "use server";
+      console.log("sign in function");
+    },
+    signOut: async () => {
+      "use server";
+      console.log("sign out function");
+    },
+  };
+};
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const auth = await authFunction();
   return (
     <html lang="en" data-toolpad-color-scheme="light" suppressHydrationWarning>
       <body className={`${roboto.variable} ${lemon.variable}`}>
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>
           <React.Suspense fallback={<LinearProgress />}>
-            <NextAppProvider navigation={navigation} theme={theme}>
+            <NextAppProvider
+              navigation={navigation}
+              theme={theme}
+              session={session}
+              authentication={auth}
+            >
               <CssBaseline />
               {children}
             </NextAppProvider>
