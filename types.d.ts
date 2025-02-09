@@ -17,4 +17,5 @@ export interface Post {
   content: string;
   category?: number;
   owner?: string;
+  published_at?: string;
 }

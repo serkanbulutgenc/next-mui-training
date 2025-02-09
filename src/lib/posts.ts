@@ -1,7 +1,16 @@
 import type { Posts, Post } from "../../types.d.ts";
 
-export async function getPosts(): Promise<Posts> {
-  const res = await fetch(`https://sbgnc.pythonanywhere.com/api/posts/`);
+const API_BASE_URL = "https://sbgnc.pythonanywhere.com/api/";
+
+export async function getPosts(
+  limit: number = 10,
+  offset: number = 0
+): Promise<Posts> {
+  const fetchUrl = new URL("posts", API_BASE_URL);
+  fetchUrl.searchParams.append("limit", String(limit));
+  fetchUrl.searchParams.append("offset", String(limit * offset));
+
+  const res = await fetch(fetchUrl.toString());
 
   if (!res.ok) {
     throw new Error("An error occured while getting posts from the server");
